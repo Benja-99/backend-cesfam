@@ -19,11 +19,12 @@ const typeDefs = gql`
 		tipo: String!
 		comp: [String]!
 		contenido: String!
-		gramaje: Number
-		cantidad: Number
+		gramaje: Int
+		cantidad: Int
 	}
 
 	type Medico {
+		id: ID!
 		rut: String!
 		nombre: String!
 		pass: String!
@@ -33,8 +34,9 @@ const typeDefs = gql`
 	}
 
 	type Paciente {
+		id: ID!
 		rut: String!
-		numCarnet: Number!
+		numCarnet: Int!
 		nombre: String!
 		prescripciones: [Prescripcion]!
 		cesfam: Cesfam!
@@ -42,13 +44,15 @@ const typeDefs = gql`
 	}
 
 	type Partida {
-		fecha: Date!
+		id: ID!
+		fecha: String!
 		prescripcion: [Prescripcion]!
 		nombreR: String!
 	}
 	
 	type Prescripcion {
-		fecha: Date!
+		id: ID!
+		fecha: String!
 		cesfam: Cesfam!
 		medico: Medico!
 		paciente: Paciente!
@@ -56,12 +60,14 @@ const typeDefs = gql`
 	}
 
 	type Receta {
+		id: ID!
 		paciente: Paciente!
 		medico: Medico!
 		medicamentos: [Medicamento]!
 	}
 
 	type Reserva {
+		id: ID!
 		paciente: Paciente!
 		medicamento: Medicamento!
 	}
@@ -70,9 +76,9 @@ const typeDefs = gql`
 		id: ID!
 		direccion: String!
 		nombre: String!
-		medicos: [Medico]!
-		pacientes: [Paciente]!
-		prescripciones: [Prescripcion]!
+		medicos: [MedicoInput]!
+		pacientes: [PacienteInput]!
+		prescripciones: [PrescripcionInput]!
 	}
 
 	input MedicamentoInput {
@@ -84,51 +90,57 @@ const typeDefs = gql`
 		tipo: String!
 		comp: [String]!
 		contenido: String!
-		gramaje: Number
-		cantidad: Number
+		gramaje: Int
+		cantidad: Int
 	}
 
 	input MedicoInput {
+		id: ID!
 		rut: String!
 		nombre: String!
 		pass: String!
-		prescripciones: [Prescripcion]!
-		pacientes: [Paciente]!
-		cesfam: Cesfam!
+		prescripciones: [PrescripcionInput]!
+		pacientes: [PacienteInput]!
+		cesfam: CesfamInput!
 	}
 
 	input PacienteInput {
+		id: ID!
 		rut: String!
-		numCarnet: Number!
+		numCarnet: Int!
 		nombre: String!
-		prescripciones: [Prescripcion]!
-		cesfam: Cesfam!
-		medico: Medico!
+		prescripciones: [PrescripcionInput]!
+		cesfam: CesfamInput!
+		medico: MedicoInput!
 	}
 
 	input PartidaInput {
-		fecha: Date!
-		prescripcion: [Prescripcion]!
+		id: ID!
+		fecha: String!
+		prescripcion: [PrescripcionInput]!
 		nombreR: String!
 	}
 	
 	input PrescripcionInput {
-		fecha: Date!
-		cesfam: Cesfam!
-		medico: Medico!
-		paciente: Paciente!
-		medicamentos: [Medicamento]!
+		id: ID!
+		fecha: String!
+		cesfam: CesfamInput!
+		medico: MedicoInput!
+		paciente: PacienteInput!
+		medicamentos: [MedicamentoInput]!
 	}
 
 	input RecetaInput {
-		paciente: Paciente!
-		medico: Medico!
-		medicamentos: [Medicamento]!
+		id: ID!
+		paciente: PacienteInput!
+		medico: MedicoInput!
+		medicamentos: [MedicamentoInput]!
 	}
 
 	input ReservaInput {
-		paciente: Paciente!
-		medicamento: Medicamento!
+		id: ID!
+		paciente: PacienteInput!
+		medicamento: MedicamentoInput!
 	}
 
 	type Alert {
@@ -137,63 +149,63 @@ const typeDefs = gql`
 
 
 	type Query {
-			getCesfams: [Cesfam]
-			getCesfam(id: ID!) : Cesfam
+		getCesfams: [Cesfam]
+		getCesfam(id: ID!) : Cesfam
 
-			getMedicamentos: [Medicamento]
-			getMedicamento(id: ID!) : Medicamento
+		getMedicamentos: [Medicamento]
+		getMedicamento(id: ID!) : Medicamento
 
-			getMedicos: [Medico]
-			getMedico(id: ID!) : Medico
+		getMedicos: [Medico]
+		getMedico(id: ID!) : Medico
 
-			getPacientes: [Paciente]
-			getPaciente(id: ID!) : Paciente
+		getPacientes: [Paciente]
+		getPaciente(id: ID!) : Paciente
 
-			getPartidas: [Partida]
-			getPartida(id: ID!) : Partida
+		getPartidas: [Partida]
+		getPartida(id: ID!) : Partida
 
-			getPrescripcions: [Prescripcion]
-			getPrescripcion(id: ID!) : Prescripcion
+		getPrescripciones: [Prescripcion]
+		getPrescripcion(id: ID!) : Prescripcion
 
-			getRecetas: [Receta]
-			getReceta(id: ID!) : Receta
+		getRecetas: [Receta]
+		getReceta(id: ID!) : Receta
 
-			getReservas: [Reserva]
-			getReserva(id: ID!) : Reserva
-	}
+		getReservas: [Reserva]
+		getReserva(id: ID!) : Reserva
+}
 
-	type Mutation {
-			addCesfam(input: CesfamInput): Cesfam
-			updateCesfam(id: ID!, input: CesfamInput): Cesfam
-			deleteCesfam(id: ID!): Alert
+type Mutation {
+		addCesfam(input: CesfamInput): Cesfam
+		updateCesfam(id: ID!, input: CesfamInput): Cesfam
+		deleteCesfam(id: ID!): Alert
 
-			addMedicamento(input: MedicamentoInput): Medicamento
-			updateMedicamento(id: ID!, input: MedicamentoInput): Medicamento
-			deleteMedicamento(id: ID!): Alert
+		addMedicamento(input: MedicamentoInput): Medicamento
+		updateMedicamento(id: ID!, input: MedicamentoInput): Medicamento
+		deleteMedicamento(id: ID!): Alert
 
-			addMedico(input: MedicoInput): Medico
-			updateMedico(id: ID!, input: MedicoInput): Medico
-			deleteMedico(id: ID!): Alert
+		addMedico(input: MedicoInput): Medico
+		updateMedico(id: ID!, input: MedicoInput): Medico
+		deleteMedico(id: ID!): Alert
 
-			addPaciente(input: PacienteInput): Paciente
-			updatePaciente(id: ID!, input: PacienteInput): Paciente
-			deletePaciente(id: ID!): Alert
+		addPaciente(input: PacienteInput): Paciente
+		updatePaciente(id: ID!, input: PacienteInput): Paciente
+		deletePaciente(id: ID!): Alert
 
-			addPartida(input: PartidaInput): Partida
-			updatePartida(id: ID!, input: PartidaInput): Partida
-			deletePartida(id: ID!): Alert
+		addPartida(input: PartidaInput): Partida
+		updatePartida(id: ID!, input: PartidaInput): Partida
+		deletePartida(id: ID!): Alert
 
-			addPrescripcion(input: PrescripcionInput): Prescripcion
-			updatePrescripcion(id: ID!, input: PrescripcionInput): Prescripcion
-			deletePrescripcion(id: ID!): Alert
+		addPrescripcion(input: PrescripcionInput): Prescripcion
+		updatePrescripcion(id: ID!, input: PrescripcionInput): Prescripcion
+		deletePrescripcion(id: ID!): Alert
 
-			addReceta(input: RecetaInput): Receta
-			updateReceta(id: ID!, input: RecetaInput): Receta
-			deleteReceta(id: ID!): Alert
+		addReceta(input: RecetaInput): Receta
+		updateReceta(id: ID!, input: RecetaInput): Receta
+		deleteReceta(id: ID!): Alert
 
-			addReserva(input: ReservaInput): Reserva
-			updateReserva(id: ID!, input: ReservaInput): Reserva
-			deleteReserva(id: ID!): Alert
+		addReserva(input: ReservaInput): Reserva
+		updateReserva(id: ID!, input: ReservaInput): Reserva
+		deleteReserva(id: ID!): Alert
 	}
 `;
 

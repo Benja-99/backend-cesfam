@@ -20,4 +20,4 @@ const prescripcionSchema = new Schema({
     }]
 })
 
-export default model('Usuario', usuarioSchema)
+export default model('Prescripcion', prescripcionSchema)

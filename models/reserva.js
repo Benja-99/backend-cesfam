@@ -11,3 +11,5 @@ const reservaSchema = new Schema({
     }
 
 })
+
+export default model("Reserva", reservaSchema)
