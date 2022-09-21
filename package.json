@@ -1,0 +1,31 @@
+{
+  "name": "backend-cesfam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Benja-99/backend-cesfam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Benja-99/backend-cesfam/issues"
+  },
+  "homepage": "https://github.com/Benja-99/backend-cesfam#readme",
+  "dependencies": {
+    "apollo-server-express": "^3.10.2",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "graphql": "^16.6.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.6.1"
+  }
+}
