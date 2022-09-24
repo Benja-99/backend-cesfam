@@ -5,9 +5,9 @@ const typeDefs = gql`
 		id: ID!
 		direccion: String!
 		nombre: String!
-		medicos: [Medico]!
-		pacientes: [Paciente]!
-		prescripciones: [Prescripcion]!
+		medicos: [Medico]
+		pacientes: [Paciente]
+		prescripciones: [Prescripcion]
 	}
 
 	type Medicamento {
@@ -28,9 +28,9 @@ const typeDefs = gql`
 		rut: String!
 		nombre: String!
 		pass: String!
-		prescripciones: [Prescripcion]!
-		pacientes: [Paciente]!
-		cesfam: Cesfam!
+		prescripciones: [Prescripcion]
+		pacientes: [Paciente]
+		cesfam: Cesfam
 	}
 
 	type Paciente {
@@ -38,51 +38,49 @@ const typeDefs = gql`
 		rut: String!
 		numCarnet: Int!
 		nombre: String!
-		prescripciones: [Prescripcion]!
-		cesfam: Cesfam!
-		medico: Medico!
+		prescripciones: [Prescripcion]
+		cesfam: Cesfam
+		medico: Medico
 	}
 
 	type Partida {
 		id: ID!
 		fecha: String!
-		prescripcion: [Prescripcion]!
+		prescripcion: [Prescripcion]
 		nombreR: String!
 	}
 	
 	type Prescripcion {
 		id: ID!
 		fecha: String!
-		cesfam: Cesfam!
-		medico: Medico!
-		paciente: Paciente!
-		medicamentos: [Medicamento]!
+		cesfam: Cesfam
+		medico: Medico
+		paciente: Paciente
+		medicamentos: [Medicamento]
 	}
 
 	type Receta {
 		id: ID!
-		paciente: Paciente!
-		medico: Medico!
-		medicamentos: [Medicamento]!
+		paciente: Paciente
+		medico: Medico
+		medicamentos: [Medicamento]
 	}
 
 	type Reserva {
 		id: ID!
-		paciente: Paciente!
-		medicamento: Medicamento!
+		paciente: Paciente
+		medicamento: Medicamento
 	}
 
 	input CesfamInput {
-		id: ID!
 		direccion: String!
 		nombre: String!
-		medicos: [MedicoInput]!
-		pacientes: [PacienteInput]!
-		prescripciones: [PrescripcionInput]!
+		medicos: [MedicoInput]
+		pacientes: [PacienteInput]
+		prescripciones: [PrescripcionInput]
 	}
 
 	input MedicamentoInput {
-		id: ID!
 		nombre: String!
 		codigo: String!
 		desc: String!
@@ -95,52 +93,46 @@ const typeDefs = gql`
 	}
 
 	input MedicoInput {
-		id: ID!
 		rut: String!
 		nombre: String!
 		pass: String!
-		prescripciones: [PrescripcionInput]!
-		pacientes: [PacienteInput]!
-		cesfam: CesfamInput!
+		prescripciones: [PrescripcionInput]
+		pacientes: [PacienteInput]
+		cesfam: CesfamInput
 	}
 
 	input PacienteInput {
-		id: ID!
 		rut: String!
 		numCarnet: Int!
 		nombre: String!
-		prescripciones: [PrescripcionInput]!
-		cesfam: CesfamInput!
-		medico: MedicoInput!
+		prescripciones: [PrescripcionInput]
+		cesfam: CesfamInput
+		medico: MedicoInput
 	}
 
 	input PartidaInput {
-		id: ID!
 		fecha: String!
-		prescripcion: [PrescripcionInput]!
+		prescripcion: [PrescripcionInput]
 		nombreR: String!
 	}
 	
 	input PrescripcionInput {
-		id: ID!
 		fecha: String!
-		cesfam: CesfamInput!
-		medico: MedicoInput!
-		paciente: PacienteInput!
-		medicamentos: [MedicamentoInput]!
+		cesfam: CesfamInput
+		medico: MedicoInput
+		paciente: PacienteInput
+		medicamentos: [MedicamentoInput]
 	}
 
 	input RecetaInput {
-		id: ID!
-		paciente: PacienteInput!
-		medico: MedicoInput!
-		medicamentos: [MedicamentoInput]!
+		paciente: PacienteInput
+		medico: MedicoInput
+		medicamentos: [MedicamentoInput]
 	}
 
 	input ReservaInput {
-		id: ID!
-		paciente: PacienteInput!
-		medicamento: MedicamentoInput!
+		paciente: PacienteInput
+		medicamento: MedicamentoInput
 	}
 
 	type Alert {

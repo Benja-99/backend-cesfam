@@ -1,7 +1,6 @@
 {
   "name": "backend-cesfam",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -27,5 +26,6 @@
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "mongoose": "^6.6.1"
-  }
+  },
+  "description": ""
 }
