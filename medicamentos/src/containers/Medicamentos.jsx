@@ -2,7 +2,9 @@ import React from 'react';
 import '../styles/login.css';
 import Layout from './Layout';
 import Navbar from './Navbar';
-import {PlusCircleIcon} from '@primer/octicons-react'
+import { PlusCircleIcon} from '@primer/octicons-react'
+import {datos, pre} from '../datos';
+import {Fila, FilaPre} from './Fila';
 
 const Medicamentos = () => {
     return(
@@ -40,27 +42,13 @@ const Medicamentos = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td scope="row">Ibuprofeno</td>
-                        <td>1</td>
-                        <td>89dsds</td>
-                        <td><button type="submit" class="btn btn-success">Sumar</button></td>
-                        <td><button type="submit" class="btn btn-danger">Caducar</button></td>
-                        </tr>
-                        <tr>
-                        <td scope="row">Paracetamol</td>
-                        <td>1</td>
-                        <td>89dsddsds</td>
-                        <td><button type="submit" class="btn btn-success">Sumar</button></td>
-                        <td><button type="submit" class="btn btn-danger">Caducar</button></td>
-                        </tr>
-                        <tr>
-                        <td scope="row">Clonazepam</td>
-                        <td>1</td>
-                        <td>89vfsdsds</td>
-                        <td><button type="submit" class="btn btn-success">Sumar</button></td>
-                        <td><button type="submit" class="btn btn-danger">Caducar</button></td>
-                        </tr>
+                        {
+                            datos.map(row => {
+                                return (
+                                    <Fila nombre={row.nombre} cantidad={row.stock} codigo={row.codigo}/>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
                 <br />
@@ -85,27 +73,13 @@ const Medicamentos = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td scope="row">Benjamin Pizarro</td>
-                        <td>Valentin Riveros</td>
-                        <td>Ibuprofeno</td>
-                        <td>2</td>
-                        <td><button type="submit" class="btn btn-success">Listo</button></td>
-                        </tr>
-                        <tr>
-                        <td scope="row">Benjamin Pizarro</td>
-                        <td>Fernanda Henriquez</td>
-                        <td>Paracetamol</td>
-                        <td>1</td>
-                        <td><button type="submit" class="btn btn-success">Listo</button></td>
-                        </tr>
-                        <tr>
-                        <td scope="row">Benjamin Pizarro</td>
-                        <td>Ricardo Riveros</td>
-                        <td>Ibuprofeno</td>
-                        <td>1</td>
-                        <td><button type="submit" class="btn btn-success">Listo</button></td>
-                        </tr>
+                        {
+                            pre.map(row => {
+                                return (
+                                    <FilaPre medico={row.medico} paciente={row.paciente} medicamento={row.medicamento} cantidad={row.cantidad}/>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
                 <br />
