@@ -1,26 +1,42 @@
 import React from "react";
 
-function mialerta() {  
-    alert("Sumado 1 al stock!!");
-}
 
-function mialerta2() {  
-    alert("Restado 1 al stock!!");
-} 
 
 function mialerta3() {  
     alert("Paciente inscrito y reservado medicamento");
 } 
 
 class Fila extends React.Component {
+
+    constructor(props){
+        super()
+        this.state = {
+            count: parseInt(props.cantidad)
+        }
+        // this.setState({count: this.props.cantidad})
+        this.increase = this.increase.bind(this)
+        this.decrease = this.decrease.bind(this)
+    }
+
+    increase(){
+        this.setState({count: this.state.count + 1})
+        alert("Sumado 1 al stock!!");
+    }
+
+    decrease(){
+        this.setState({count: this.state.count - 1})
+        alert("Restado 1 al stock!!");
+    }
+
+    
     render(){
         return (
             <tr>
                 <td scope="row">{this.props.nombre}</td>
-                <td>{this.props.cantidad}</td>
+                <td>{this.state.count}</td>
                 <td>{this.props.codigo}</td>
-                <td><button type="submit" class="btn btn-success" onClick={mialerta}>Sumar</button></td>
-                <td><button type="submit" class="btn btn-danger" onClick={mialerta2}>Caducar</button></td>
+                <td><button type="submit" class="btn btn-success" onClick={this.increase}>Sumar</button></td>
+                <td><button type="submit" class="btn btn-danger" onClick={this.decrease}>Caducar</button></td>
             </tr>
         )
     }
