@@ -1,13 +1,14 @@
 import './App.css';
 import React from 'react';
-import Medicamentos from './containers/Medicamentos';
-import Home from './containers/Home';
-import Agregar from './containers/agregar';
-import Preinscripcion from './containers/Preinscripcion';
-import Entrega from './containers/Entrega';
+import Medicamentos from './components/Medicamentos';
+import Home from './components/Home';
+import Agregar from './components/agregar';
+import Preinscripcion from './components/Preinscripcion';
+import Entrega from './components/Entrega';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import PreEntrega from './containers/agregarPre';
-import Recetas from './containers/recetas';
+import PreEntrega from './components/agregarPre';
+import Recetas from './components/recetas';
+
 
 class App extends React.Component{
   render(){
