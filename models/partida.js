@@ -1,12 +1,13 @@
-import { model, Schema } from 'mongoose'
+const { Schema, model } = require('mongoose')
 
 const partidaSchema = new Schema({
     fecha: Date,
     prescripcion: {
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Prescripcion'
     },
     nombreR: String
 })
 
-export default model('Partida', partidaSchema)
+const Partida = model('Partida', partidaSchema)
+module.exports = { Partida }

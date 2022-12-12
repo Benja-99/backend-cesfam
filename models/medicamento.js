@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+const { Schema, model } = require('mongoose')
 
 const medicamentoSchema = new Schema ({
     nombre: String,
@@ -12,4 +12,5 @@ const medicamentoSchema = new Schema ({
     cantidad: Number,
 })
 
-export default model('Medicamento', medicamentoSchema)
+const Medicamento = model('Medicamento', medicamentoSchema)
+module.exports = { Medicamento }

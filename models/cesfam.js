@@ -1,20 +1,21 @@
-import { Schema, model} from "mongoose"
+const { Schema, model } = require('mongoose')
 
 const cesfamSchema = new Schema({
 		direccion: String,
 		nombre: String,
 		medicos: [{
-			type: Schema.Types.ObjectId,
+			type: Object,
 			ref: 'Medico'
 		}],
 		pacientes: [{
-			type: Schema.Types.ObjectId,
+			type: Object,
 			ref: 'Paciente'
 		}],
 		prescripciones: [{
-			type: Schema.Types.ObjectId,
+			type: Object,
 			ref: 'Prescripcion'
 		}]
 })
 
-export default model('Cesfam', cesfamSchema)
+const Cesfam = model('Cesfam', cesfamSchema)
+module.exports = { Cesfam }

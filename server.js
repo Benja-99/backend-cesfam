@@ -1,16 +1,12 @@
-import mongoose from "mongoose";
-import bodyParser from "body-parser";
-import cors from "cors";
-import { ApolloServer, gql} from "apollo-server-express"
-import merge from "lodash";
-import express from 'express'
-import typeDefs from './typeDefs.js'
-import resolvers from './resolvers.js'
+const mongoose = require('mongoose')
+const cors = require('cors')
+const express = require('express');
+const { ApolloServer, gql } = require('apollo-server-express');
+
+const { typeDefs } = require('./typeDefs')
+const { resolvers } = require('./resolvers')
 
 mongoose.connect("mongodb+srv://benja:aG98IBeo9TMFvI2I@cluster0.zgq4xqi.mongodb.net/backend-cesfam", {useNewUrlParser: true, useUnifiedTopology: true})
-
-
-
 
 let apolloServer = null
 

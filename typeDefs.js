@@ -1,10 +1,10 @@
-import { gql } from 'apollo-server-express'
+const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
 	type Cesfam {
 		id: ID!
-		direccion: String!
-		nombre: String!
+		direccion: String
+		nombre: String
 		medicos: [Medico]
 		pacientes: [Paciente]
 		prescripciones: [Prescripcion]
@@ -12,22 +12,22 @@ const typeDefs = gql`
 
 	type Medicamento {
 		id: ID!
-		nombre: String!
-		codigo: String!
-		desc: String!
-		fab: String!
-		tipo: String!
-		comp: [String]!
-		contenido: String!
+		nombre: String
+		codigo: String
+		desc: String
+		fab: String
+		tipo: String
+		comp: [String]
+		contenido: String
 		gramaje: Int
 		cantidad: Int
 	}
 
 	type Medico {
 		id: ID!
-		rut: String!
-		nombre: String!
-		pass: String!
+		rut: String
+		nombre: String
+		pass: String
 		prescripciones: [Prescripcion]
 		pacientes: [Paciente]
 		cesfam: Cesfam
@@ -35,9 +35,9 @@ const typeDefs = gql`
 
 	type Paciente {
 		id: ID!
-		rut: String!
-		numCarnet: Int!
-		nombre: String!
+		rut: String
+		numCarnet: Int
+		nombre: String
 		prescripciones: [Prescripcion]
 		cesfam: Cesfam
 		medico: Medico
@@ -45,14 +45,14 @@ const typeDefs = gql`
 
 	type Partida {
 		id: ID!
-		fecha: String!
+		fecha: String
 		prescripcion: [Prescripcion]
-		nombreR: String!
+		nombreR: String
 	}
 	
 	type Prescripcion {
 		id: ID!
-		fecha: String!
+		fecha: String
 		cesfam: Cesfam
 		medico: Medico
 		paciente: Paciente
@@ -73,51 +73,51 @@ const typeDefs = gql`
 	}
 
 	input CesfamInput {
-		direccion: String!
-		nombre: String!
+		direccion: String
+		nombre: String
 		medicos: [MedicoInput]
 		pacientes: [PacienteInput]
 		prescripciones: [PrescripcionInput]
 	}
 
 	input MedicamentoInput {
-		nombre: String!
-		codigo: String!
-		desc: String!
-		fab: String!
-		tipo: String!
-		comp: [String]!
-		contenido: String!
+		nombre: String
+		codigo: String
+		desc: String
+		fab: String
+		tipo: String
+		comp: [String]
+		contenido: String
 		gramaje: Int
 		cantidad: Int
 	}
 
 	input MedicoInput {
-		rut: String!
-		nombre: String!
-		pass: String!
+		rut: String
+		nombre: String
+		pass: String
 		prescripciones: [PrescripcionInput]
 		pacientes: [PacienteInput]
 		cesfam: CesfamInput
 	}
 
 	input PacienteInput {
-		rut: String!
-		numCarnet: Int!
-		nombre: String!
+		rut: String
+		numCarnet: Int
+		nombre: String
 		prescripciones: [PrescripcionInput]
 		cesfam: CesfamInput
 		medico: MedicoInput
 	}
 
 	input PartidaInput {
-		fecha: String!
+		fecha: String
 		prescripcion: [PrescripcionInput]
-		nombreR: String!
+		nombreR: String
 	}
 	
 	input PrescripcionInput {
-		fecha: String!
+		fecha: String
 		cesfam: CesfamInput
 		medico: MedicoInput
 		paciente: PacienteInput
@@ -201,4 +201,4 @@ type Mutation {
 	}
 `;
 
-export default typeDefs
+module.exports = { typeDefs }

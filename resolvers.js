@@ -1,11 +1,11 @@
-import Cesfam from "./models/cesfam.js"
-import Medicamento from "./models/medicamento.js"
-import Medico from "./models/medico.js"
-import Paciente from "./models/paciente.js"
-import Partida from "./models/partida.js"
-import Prescripcion from "./models/prescripcion.js"
-import Receta from "./models/receta.js"
-import Reserva from "./models/reserva.js"
+const { Cesfam } = require('./models/cesfam')
+const { Medicamento } = require('./models/medicamento')
+const { Medico } = require('./models/medico')
+const { Paciente } = require('./models/paciente')
+const { Partida } = require('./models/partida')
+const { Prescripcion } = require('./models/prescripcion')
+const { Receta } = require('./models/receta')
+const { Reserva } = require('./models/reserva')
 
 
 const resolvers = {
@@ -213,4 +213,4 @@ const resolvers = {
 		}
 }
 
-export default resolvers
+module.exports = { resolvers }

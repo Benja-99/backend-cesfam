@@ -1,18 +1,19 @@
-import { model, Schema } from 'mongoose'
+const { Schema, model } = require('mongoose')
 
 const recetaSchema = new Schema ({
     paciente: {
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Paciente'
     },
     medico: {
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Medico'
     },
     medicamentos: [{
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Medicamento'
     }]
 })
 
-export default model('Receta', recetaSchema)
+const Receta = model('Receta', recetaSchema)
+module.exports = { Receta }

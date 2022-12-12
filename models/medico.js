@@ -1,4 +1,4 @@
-import { Schema, model} from "mongoose"
+const { Schema, model } = require('mongoose')
 
 
 const medicoSchema = new Schema({
@@ -6,18 +6,19 @@ const medicoSchema = new Schema({
     nombre: String,
     pass: String,
     prescripciones: [{
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Prescripcion'
     }],
     pacientes: [{
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Paciente'
     }],
     cesfam: {
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Cesfam'
     }
 
 })
 
-export default model('Medico', medicoSchema)
+const Medico = model('Medico', medicoSchema)
+module.exports = { Medico }

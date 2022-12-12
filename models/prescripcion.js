@@ -1,23 +1,24 @@
-import { Schema, model} from "mongoose"
+const { Schema, model } = require('mongoose')
 
 const prescripcionSchema = new Schema({
     fecha: String,
     cesfam: {
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Cesfam'
     },
     medico: {
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Medico'
     },
     paciente: {
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Paciente'
     },
     medicamentos: [{
-        type: Schema.Types.ObjectId,
+        type: Object,
         ref: 'Medicamento'
     }]
 })
 
-export default model('Prescripcion', prescripcionSchema)
+const Prescripcion = model('Prescripcion', prescripcionSchema)
+module.exports = { Prescripcion }
